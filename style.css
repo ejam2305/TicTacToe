@@ -27,7 +27,7 @@
 .screenCol1, .screenCol3{
     font-family: 'Times New Roman', Times, serif;
     white-space: pre-line;
-    font-size: 16vh;
+    font-size: calc(1vh + 8vw);
     text-shadow: 3px 3px 3px green;
 }
 
@@ -41,8 +41,8 @@
 .restartButton{
     border: 5px solid rgb(0, 99, 21);
     background-color: rgb(20, 189, 20);
-    width: 6vw;
-    height: 4vh;
+    width: min-content;
+    height: min-content;
 }
 
 .gRow1, .gRow2, .gRow3{
@@ -59,7 +59,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 18vh;
+    font-size: calc(6vh + 6vw);
     color: blue;
 }
 .gRow2 > .gCol2{
