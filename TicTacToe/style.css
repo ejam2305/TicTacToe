@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.viewport{
+    background-color: rgb(93, 255, 147);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.screenCol1, .screenCol2, .screenCol3{
+    width: 33.3%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.screenCol1, .screenCol3{
+    font-family: 'Times New Roman', Times, serif;
+    white-space: pre-line;
+    font-size: 16vh;
+}
+
+.gameBox{
+    background-color: rgb(36, 156, 76);
+    width: 100%;
+    height: 60%;
+}
+
+.gRow1, .gRow2, .gRow3{
+    width: 100%;
+    height: 33.3%;
+    display: flex;
+    flex-direction: row;
+}
+
+.gCol1, .gCol2, .gCol3{
+    width: 33.3%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18vh;
+    color: blue;
+}
+.gRow2 > .gCol2{
+    border: 3px solid black;
+}
+.gRow1 > .gCol2 , .gRow3 > .gCol2{
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+}
+.gRow2 > .gCol1 , .gRow2 > .gCol3{
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+.circle{
+    width: 70%;
+    height: 80%;
+    outline: 8px solid red;
+    outline-offset: -8px;
+    border-radius: 100%;
+}
