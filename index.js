@@ -37,10 +37,10 @@ TicTacToe.forEach((box, boxNum) => {
         if(winner == false){
             newInput = true;
             if(turn%2 == 1){
-                leftScreen.textContent = "X\r\nTurn";
+                leftScreen.textContent = "X\r\nTURN";
             }
             else{
-                leftScreen.textContent = "O\r\nTurn";
+                leftScreen.textContent = "O\r\nTURN";
             }
             for(let i = 0 ; i < userInput.length ; i++){//check if input is valid
                 if(userInput[i] == boxNum){
@@ -57,13 +57,13 @@ TicTacToe.forEach((box, boxNum) => {
                     if(circleSum[0][i] == 3 || circleSum[1][i] == 3 || (i < 1 && circleSum[2][i] == 15)){//if the number of circles in a row, column, or diagonal add up to 3
                         console.log("Circle wins");
                         winner = true;
-                        rightScreen.textContent = "O\r\nWins";
+                        rightScreen.textContent = "O\r\nWINS";
                         leftScreen.textContent = "";
                     }
                     if(crossSum[0][i] == 3 || crossSum[1][i] == 3 || (i < 1 && crossSum[2][i] == 15)){//if the number of crosses in a row, column, or diagonal add up to 3
                         console.log("Cross wins");
                         winner = true;
-                        rightScreen.textContent = "X\r\nWins";
+                        rightScreen.textContent = "X\r\nWINS";
                         leftScreen.textContent = "";
                     }
                 }
