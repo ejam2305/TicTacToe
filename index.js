@@ -2,8 +2,8 @@ const TicTacToe = ["gBox1", "gBox2", "gBox3", "gBox4", "gBox5", "gBox6", "gBox7"
 const leftScreen = document.getElementById("screenCol1");
 const rightScreen = document.getElementById("screenCol3")
 var userInput = [];
-var circleSum = [[0, 0, 0], [0, 0, 0], [0]];
-var crossSum = [[0, 0, 0], [0, 0, 0], [0]];
+var circleSum = [[0, 0, 0], [0, 0, 0], [0, 0]];
+var crossSum = [[0, 0, 0], [0, 0, 0], [0, 0]];
 var newInput = true;
 var winner = false;
 var turn = 1;
@@ -15,8 +15,11 @@ function drawMarks(mark, markNum, turn) {
         playerMark.className = "circle";
         circleSum[0][Math.floor(markNum/3)] += 1;//adds 1 to the sum of the respective row of the cell that was clicked
         circleSum[1][Math.floor(markNum%3)] += 1;//adds 1 to the sum of the respective column of the cell that was clicked
-        if(markNum%2 == 0){
-            circleSum[2][0] += markNum+1;//adds to the sum of the respective diagonal of the cell that was clicked
+        if(((markNum+1)%2 == 1 && (markNum+1)%4 != 1) || (markNum+1)%2 == 1 && markNum == 4){
+            circleSum[2][0] += markNum+1;
+        }
+        if((markNum+1)%4 == 1){
+            circleSum[2][1] += markNum+1;
         }
         console.log(circleSum[2][0]);
     }
@@ -24,8 +27,11 @@ function drawMarks(mark, markNum, turn) {
         var playerMark = document.createTextNode("X");
         crossSum[0][Math.floor(markNum/3)] += 1;
         crossSum[1][Math.floor(markNum%3)] += 1;
-        if(markNum%2 == 0){
+        if(((markNum+1)%2 == 1 && (markNum+1)%4 != 1) || (markNum+1)%2 == 1 && markNum == 4){
             crossSum[2][0] += markNum+1;
+        }
+        if((markNum+1)%4 == 1){
+            crossSum[2][1] += markNum+1;
         }
     }
     currentBox.append(playerMark);
@@ -54,19 +60,23 @@ TicTacToe.forEach((box, boxNum) => {
             }
             if(turn > 5){//wincon
                 for(let i = 0 ; i < 3 ; i++){
-                    if(circleSum[0][i] == 3 || circleSum[1][i] == 3 || (i < 1 && circleSum[2][i] == 15)){//if the number of circles in a row, column, or diagonal add up to 3
+                    if(circleSum[0][i] == 3 || circleSum[1][i] == 3 || (i < 2 && circleSum[2][i] == 15)){//if the number of circles in a row, column, or diagonal add up to 3
                         console.log("Circle wins");
                         winner = true;
                         rightScreen.textContent = "O\r\nWINS";
                         leftScreen.textContent = "";
                     }
-                    if(crossSum[0][i] == 3 || crossSum[1][i] == 3 || (i < 1 && crossSum[2][i] == 15)){//if the number of crosses in a row, column, or diagonal add up to 3
+                    if(crossSum[0][i] == 3 || crossSum[1][i] == 3 || (i < 2 && crossSum[2][i] == 15)){//if the number of crosses in a row, column, or diagonal add up to 3
                         console.log("Cross wins");
                         winner = true;
                         rightScreen.textContent = "X\r\nWINS";
                         leftScreen.textContent = "";
                     }
                 }
+            }
+            if(turn > 9 && winner == false){
+                rightScreen.textContent = "DRAW";
+                leftScreen.textContent = "";
             }
         }
     });
